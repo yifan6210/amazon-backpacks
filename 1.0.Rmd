@@ -1,0 +1,14 @@
+---
+title: '1.0'
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+url <- "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dsporting&field-keywords=military+tactical+backpack&rh=n%3A3375251%2Ck%3Amilitary+tactical+backpack"
+html_bom <- read_html(url)
+class(html_bom)
+```
+
+
