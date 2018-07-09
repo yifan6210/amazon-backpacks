@@ -1,0 +1,26 @@
+---
+title: "2018 Mar"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(mosaic)
+```
+
+```{r}
+library(readxl)
+data3 <- read_excel("~/Desktop/2018 亚马逊销售情况/3月/2018Mar1-2018Mar31CTR.xlsx")
+```
+
+```{r}
+Marclean <- data3 %>%
+  filter(!is.na(quantity))
+
+Mar <- Febclean %>%
+  group_by(description) %>%
+  summarise(n()) %>%
+  filter (str_detect(description, "Backpack"))
+```

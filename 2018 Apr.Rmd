@@ -1,0 +1,25 @@
+---
+title: "2018 Apr"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(mosaic)
+```
+
+```{r}
+library(readxl)
+data4 <- read_excel("~/Desktop/2018 亚马逊销售情况/4月/2018Apr1-2018Apr30CTR.xlsx")
+```
+
+```{r}
+Aprclean <- data4 %>%
+  filter(!is.na(quantity))
+
+Apr <- Aprclean %>%
+  group_by(description) %>%
+  summarise(n()) %>%
+  filter (str_detect(description, "Backpack"))
+```
