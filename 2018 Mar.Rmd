@@ -20,7 +20,7 @@ Marclean <- data3 %>%
   filter(!is.na(quantity))
 
 Mar <- Febclean %>%
-  group_by(description) %>%
+  group_by(description, sku) %>%
   summarise(n()) %>%
   filter (str_detect(description, "Backpack"))
 ```

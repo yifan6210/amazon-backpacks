@@ -27,7 +27,7 @@ Jan1 <- read_excel("Jan1.1.xls")
 
 ```{r}
 Janc <- Janclean %>%
-  group_by(description) %>%
+  group_by(description, sku) %>%
   summarise(n()) %>%
   filter(str_detect(description, "Backpack"))
 ```

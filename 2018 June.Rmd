@@ -19,7 +19,7 @@ Juneclean <- data6 %>%
   filter(!is.na(quantity))
 
 June <- Juneclean %>%
-  group_by(description) %>%
+  group_by(description, sku) %>%
   summarise(n()) %>%
   filter (str_detect(description, "Backpack"))
 ```
