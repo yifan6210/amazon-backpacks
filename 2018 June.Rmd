@@ -1,0 +1,27 @@
+---
+title: "2018 June"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(mosaic)
+```
+
+```{r}
+library(readxl)
+data6 <- read_excel("~/Desktop/2018 亚马逊销售情况/6月/2018Jun1-2018Jun30CTR.xlsx")
+```
+
+```{r}
+Juneclean <- data6 %>%
+  filter(!is.na(quantity))
+
+June <- Juneclean %>%
+  group_by(description) %>%
+  summarise(n()) %>%
+  filter (str_detect(description, "Backpack"))
+```
+
+

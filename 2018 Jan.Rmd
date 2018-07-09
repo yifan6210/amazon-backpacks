@@ -6,9 +6,29 @@ output: html_document
 ```{r}
 library(tidyverse)
 library(dplyr)
+library(mosaic)
 ```
 
 ```{r}
-data1 <- read.csv(file.choose(), header = TRUE)
+library(readxl)
+data1 <- read_excel("~/Desktop/2018 亚马逊销售情况/1月/2018Jan1-2018Jan31CustomTransaction.xls")
+```
+
+```{r}
+Janclean <- data1 %>%
+  filter(!is.na(quantity))
+
+Jan <- Janclean %>%
+  group_by(order.state) %>%
+  summarise(n())
+
+Jan1 <- read_excel("Jan1.1.xls")
+```
+
+```{r}
+Janc <- Janclean %>%
+  group_by(description) %>%
+  summarise(n()) %>%
+  filter(str_detect(description, "Backpack"))
 ```
 
